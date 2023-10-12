@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsDemo
+namespace ProjectManagementWinApp_NguyenQuangVinh
 {
     static class Program
     {
@@ -17,7 +17,7 @@ namespace WindowsFormsDemo
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTT());
+            Application.Run(new Login());
         }
     }
 }

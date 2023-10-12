@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsDemo
+﻿namespace ProjectManagementWinApp_NguyenQuangVinh
 {
     public class TruyenTranh
     {

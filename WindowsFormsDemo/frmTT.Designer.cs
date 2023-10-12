@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsDemo
+namespace ProjectManagementWinApp_NguyenQuangVinh
 {
     partial class frmTT
     {
@@ -249,7 +249,7 @@ namespace WindowsFormsDemo
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsDemo.Properties.Resources.Comic;
+            this.pictureBox1.Image = global::ProjectManagementWinApp_NguyenQuangVinh.Properties.Resources.Comic;
             this.pictureBox1.Location = new System.Drawing.Point(841, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(315, 410);

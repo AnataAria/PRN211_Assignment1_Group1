@@ -24,7 +24,7 @@ namespace DataAccessObjects
         private string GetConnectionString()
         {
             IConfiguration configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                     .AddJsonFile("appsettings.json", true, true).Build();
             return configuration["ConnectionStrings:DefaultConnectionString"];
         }

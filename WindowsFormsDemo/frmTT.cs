@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace WindowsFormsDemo
+namespace ProjectManagementWinApp_NguyenQuangVinh
 {
     public partial class frmTT : Form
     {

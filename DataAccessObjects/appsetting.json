@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings" {
+    "DefaultConnectionString": "Server=DESKTOP-CN9BKB3;Database=CarroonManagment; Uid=sa; Pwd=12345"
+  }
+}

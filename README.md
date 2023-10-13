@@ -16,13 +16,13 @@
 
 - Default username is: admin@FUCartoonManagement.com
 - Default password is: @@admin@@
-- You can change this default on file appsetings.json is here: https://github.com/AnataAria/PRN211_Assignment1_Group1/blob/main/document/Assignment_01_CartoonManagement_V5.docx
+- You can change this default on file appsetings.json is here: [Document](https://github.com/AnataAria/PRN211_Assignment1_Group1/blob/main/document/Assignment_01_CartoonManagement_V5.docx) 
 
 ### DOCUMENT
 - The document about this assignment is in folder ./document/Assignment_01_CartoonManagement_V5.docx
 ### CONTACT ME
-- GitHub: https://github.com/AnataAria
-- LinkedIn: https://www.linkedin.com/in/nguy%E1%BB%85n-quang-vinh-980a66265/
-- GitLab: https://gitlab.com/AnataAria
+- GitHub: [AnataAria](https://github.com/AnataAria) 
+- LinkedIn: [Nguyen Quang Vinh](https://www.linkedin.com/in/nguy%E1%BB%85n-quang-vinh-980a66265/) 
+- GitLab: [AnataAria](https://gitlab.com/AnataAria) 
 
 

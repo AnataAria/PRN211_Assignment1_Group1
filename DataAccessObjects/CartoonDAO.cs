@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessObjects
 {
-    internal class CartoonDAO
+    public class CartoonDAO
     {
 
         public static List<Cartoon> GetCartoons()
@@ -20,7 +20,7 @@ namespace DataAccessObjects
             {
                 using (var context = new CarroonManagmentContext())
                 {
-                    listCartoons = context.Cartoons.Include(f => f.CartoonType).ToList();
+                    listCartoons = context.Cartoons.Include(f => f.CartoonTypeNavigation).ToList();
                 }
             }catch (Exception ex)
             {
@@ -32,21 +32,70 @@ namespace DataAccessObjects
 
         public static Cartoon GetCartoonById(decimal id)
         {
-            return new Cartoon();
+            Cartoon data;
+            try
+            {
+                using (var context = new CarroonManagmentContext())
+                {
+                    data = context.Cartoons.Include(i => i.CartoonTypeNavigation).FirstOrDefault(x => x.CartoonId.Equals(id));
+                }
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return data;
+            
         }
 
         public static void SaveCartoon(Cartoon cartoon)
         {
-
+            try
+            {
+                using (var context = new CarroonManagmentContext())
+                {
+                    context.Cartoons.Add(cartoon);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         public static void DeleteCartoon(Cartoon cartoon)
         {
-
+            try
+            {
+                using (var context = new CarroonManagmentContext())
+                {
+                    context.Cartoons.Remove(cartoon);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public static void UpdateCartoon(Cartoon cartoon)
         {
-
+            try
+            {
+                using (var context = new CarroonManagmentContext())
+                {
+                    var a = context.Cartoons.Find(cartoon.CartoonId);
+                    if(a != null)
+                    {
+                        a.Clone(cartoon);
+                    }
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

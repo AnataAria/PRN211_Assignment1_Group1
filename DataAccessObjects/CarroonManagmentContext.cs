@@ -25,9 +25,11 @@ namespace DataAccessObjects
         {
             IConfiguration configuration = new ConfigurationBuilder()
                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                    .AddJsonFile("appsettings.json", true, true).Build();
+                    .AddJsonFile("appsetting.json", true, true).Build();
             return configuration["ConnectionStrings:DefaultConnectionString"];
         }
+
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -74,6 +76,11 @@ namespace DataAccessObjects
                 entity.Property(e => e.LaunchDate)
                     .HasColumnType("date")
                     .HasColumnName("launchDate");
+
+                entity.Property(e => e.Producer)
+                    .IsRequired()
+                    .HasMaxLength(120)
+                    .HasColumnName("producer");
 
                 entity.Property(e => e.ShortDescription)
                     .IsRequired()

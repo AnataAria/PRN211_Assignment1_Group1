@@ -4,38 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessObjects;
 namespace Repositories
 {
     public class CartoonRepository : ICartoonRepository
     {
         public void DeleteCartoon(Cartoon p)
         {
-            throw new NotImplementedException();
+            CartoonDAO.DeleteCartoon(p);
         }
 
         public Cartoon GetCartoonById(int id)
         {
-            throw new NotImplementedException();
+            return CartoonDAO.GetCartoonById(id);
         }
 
         public List<Cartoon> GetCartoons()
         {
-            throw new NotImplementedException();
+            return CartoonDAO.GetCartoons();
         }
 
         public List<CartoonType> GetCartoonTypes()
         {
-            throw new NotImplementedException();
+            return CourseTypeDAO.GetCartoonTypes();
         }
 
         public void SaveCartoon(Cartoon p)
         {
-            throw new NotImplementedException();
+            
+            CartoonDAO.SaveCartoon(p);
         }
 
         public void UpdateCartoon(Cartoon p)
         {
-            throw new NotImplementedException();
+            CartoonDAO.UpdateCartoon(p);
         }
     }
 }

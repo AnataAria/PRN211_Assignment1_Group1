@@ -19,7 +19,7 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
         {
             InitializeComponent();
             var path = Directory.GetCurrentDirectory();
-            this.configuration =  new ConfigurationBuilder()
+            this.configuration = new ConfigurationBuilder()
                     .SetBasePath(path)
                     .AddJsonFile("appsettings.json", true, true).Build();
         }
@@ -28,7 +28,7 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
         {
             string emailin = email.Text;
             string passwordin = password.Text;
-            if(CheckAdminLogin(emailin, passwordin))
+            if (CheckAdminLogin(emailin, passwordin))
             {
                 frmTT a = new frmTT();
                 this.Hide();
@@ -42,11 +42,16 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
 
 
         private bool CheckAdminLogin(string username, string password)
-        { 
+        {
             var un = configuration["admin-account:username"];
             var pass = configuration["admin-account:password"];
             if (un.Equals(username) && pass.Equals(password)) return true;
             return false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

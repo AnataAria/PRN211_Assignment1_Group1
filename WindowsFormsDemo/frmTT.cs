@@ -1,43 +1,83 @@
-﻿using System;
+﻿using BusinessObjects;
+using EnvDTE90;
+using Microsoft.VisualStudio.Shell.Interop;
+using Repositories;
+using System;
 using System.Windows.Forms;
 
 namespace ProjectManagementWinApp_NguyenQuangVinh
 {
+    public enum State
+    {
+        EDIT,
+        INSERT,
+        DELETE,
+        NORMAL
+    }
     public partial class frmTT : Form
     {
-        private DanhSachTruyenTranh ds;
+        private State formState;
+        private ICartoonRepository cartoonRepository;
         public frmTT()
         {
             InitializeComponent();
-            ds = new DanhSachTruyenTranh();
+            cartoonRepository = new CartoonRepository();
+            formState = State.NORMAL;
+            StateChangeHandler();
+            LoadType();
+        }
+
+        private void LoadType()
+        {
+            var list = cartoonRepository.GetCartoonTypes();
+            foreach (var type in list)
+            {
+                cbCartoonType.Items.Insert(type.CartoonTypeId - 1, type.CartoonName);
+            }
+
         }
 
         void Reset()
         {
-            txtMaTruyen.Text = "";
-            txtNamXuatBan.Text = "";
-            txtNhaXuatBan.Text = "";
-            txtSoLuong.Text = "";
-            txtTacGia.Text = "";
-            txtTenTruyen.Text = "";
+            txtCartoonCode.Text = "";
+            txtCartoonName.Text = "";
+            txtActors.Text = "";
+            cbCartoonType.SelectedIndex = 0;
+            txtReleaseDate.Text = "";
+            txtProducer.Text = "";
+            txtCountry.Text = "";
+            txtDirector.Text = "";
+            rtbShortDescription.Text = "";
         }
-
+        private void DisableInput()
+        {
+            txtCartoonCode.Enabled = false;
+            txtCartoonName.Enabled = false;
+            txtActors.Enabled = false;
+            cbCartoonType.Enabled = false;
+            txtReleaseDate.Enabled = false;
+            txtProducer.Enabled = false;
+            txtCountry.Enabled = false;
+            txtDirector.Enabled = false;
+            rtbShortDescription.Enabled = false;
+            btnLuu.Enabled = false;
+        }
         void CapNhatListView()
         {
             lvData.Items.Clear();
-            for (int i = 0; i < ds.SoPhanTu; i++)
+            var cartoonList = cartoonRepository.GetCartoons();
+            foreach (var cartoon in cartoonList)
             {
-                TruyenTranh tempData = ds.LayThongTinTuViTri(i);
-                lvData.Items.Add(new ListViewItem(new string[] { "" + 
-                    tempData.MaTruyen, tempData.NamXuatBan, tempData.TacGia, tempData.TenTruyen, 
-                    tempData.NhaXuatBan, tempData.SoLuong.ToString() }));
+                lvData.Items.Add(new ListViewItem(new string[] { "" +
+                    cartoon.CartoonId, cartoon.CartoonName, cartoon.LaunchDate.ToString(), cartoon.CartoonTypeNavigation.CartoonName,
+                    cartoon.ShortDescription, cartoon.Actors, cartoon.Director,cartoon.Country,cartoon.Producer }));
             }
         }
 
         private void frmTT_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult d;
-            d = MessageBox.Show("Bạn có thật sự muốn thoát hay không?", "Quản lý thông tin truyện tranh", 
+            d = MessageBox.Show("You already want to exit?", "Cartoon Management System",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button1);
             if (d == DialogResult.Cancel)
@@ -56,54 +96,87 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
             Reset();
             if (btnThem.Text.Equals("Thêm"))
             {
+                formState = State.INSERT;
                 for (int i = 0; i < lvData.SelectedItems.Count; i++)
                 {
                     lvData.SelectedItems[i].Selected = false;
                 }
-                btnThem.Text = "Hủy";
-                txtMaTruyen.Enabled = true;
-                txtNamXuatBan.Enabled = true;
-                txtNhaXuatBan.Enabled = true;
-                txtSoLuong.Enabled = true;
-                txtTacGia.Enabled = true;
-                txtTenTruyen.Enabled = true;
-                btnLuu.Enabled = true;
-                txtMaTruyen.Focus();
+                StateChangeHandler();
+                txtCartoonCode.Focus();
             }
             else
             {
-                btnThem.Text = "Thêm";
-                txtMaTruyen.Enabled = false;
-                txtNamXuatBan.Enabled = false;
-                txtNhaXuatBan.Enabled = false;
-                txtSoLuong.Enabled = false;
-                txtTacGia.Enabled = false;
-                txtTenTruyen.Enabled = false;
-                btnLuu.Enabled = false;
+                formState = State.NORMAL;
+                StateChangeHandler();
             }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            try
+            if(formState == State.EDIT)
             {
-                TruyenTranh truyentranh = new TruyenTranh(int.Parse(txtMaTruyen.Text), txtNamXuatBan.Text,
-                    txtTacGia.Text, txtTenTruyen.Text, txtNhaXuatBan.Text, int.Parse(txtSoLuong.Text));
-                if (ds.ThemTruyenTranh(truyentranh))
+                try
                 {
+                    var cartoon = new Cartoon(
+                        decimal.Parse(txtCartoonCode.Text),
+                        txtCartoonName.Text,
+                        DateTime.Parse(txtReleaseDate.Text),
+                        cbCartoonType.SelectedIndex + 1,
+                        rtbShortDescription.Text,
+                        txtActors.Text,
+                        txtDirector.Text,
+                        txtCountry.Text,
+                        txtProducer.Text
+                    );
+                    cartoonRepository.UpdateCartoon(cartoon);
                     CapNhatListView();
+                    formState = State.NORMAL;
+                    StateChangeHandler();
+                    MessageBox.Show("Lưu thành công!", "Quản lý thông tin truyện tranh - Lưu thay đổi",
+                        MessageBoxButtons.OK, MessageBoxIcon.None);
                     Reset();
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi dữ liệu!", "Quản lý thông tin truyện tranh - Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    txtCartoonCode.Focus();
+                    txtCartoonCode.SelectAll();
+                }
             }
-            catch (Exception)
+            if(formState == State.INSERT)
             {
-                MessageBox.Show("Lỗi dữ liệu!", "Quản lý thông tin truyện tranh - Lỗi", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                txtMaTruyen.Focus();
-                txtMaTruyen.SelectAll();
+                try
+                {
+                    var cartoon = new Cartoon(
+                        txtCartoonName.Text,
+                        DateTime.Parse(txtReleaseDate.Text),
+                        cbCartoonType.SelectedIndex + 1,
+                        rtbShortDescription.Text,
+                        txtActors.Text,
+                        txtDirector.Text,
+                        txtCountry.Text,
+                        txtProducer.Text
+                    );
+                    cartoonRepository.SaveCartoon(cartoon);
+                    CapNhatListView();
+                    MessageBox.Show("Lưu thành công!", "Quản lý thông tin truyện tranh - Thêm dữ liệu",
+                        MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Reset();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi dữ liệu!", "Quản lý thông tin truyện tranh - Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    txtCartoonCode.Focus();
+                    txtCartoonCode.SelectAll();
+                }
             }
         }
 
@@ -117,11 +190,94 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
                 int maSo = int.Parse(lvData.SelectedItems[i].SubItems[0].Text);
                 if (d == DialogResult.OK)
                 {
-                    ds.XoaTruyenTranh(maSo);
+                    var temp = cartoonRepository.GetCartoonById(maSo);
+                    cartoonRepository.DeleteCartoon(temp);
                 }
             }
             CapNhatListView();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            CapNhatListView();
+        }
+
+        private void lvData_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            for (int i = 0; i < lvData.SelectedItems.Count; i++)
+            {
+                int maSo = int.Parse(lvData.SelectedItems[i].SubItems[0].Text);
+                Cartoon cartoon = cartoonRepository.GetCartoonById((int)maSo);
+                if(cartoon != null) FetchCartoonData(cartoon);
+            }
+            formState = State.EDIT;
+            StateChangeHandler();
+        }
+
+        private void FetchCartoonData(Cartoon data)
+        {
+            txtCartoonCode.Text = data.CartoonId.ToString();
+            txtCartoonName.Text = data.CartoonName;
+            txtActors.Text = data.Actors;
+            cbCartoonType.SelectedIndex = data.CartoonType - 1;
+            txtReleaseDate.Text = data.LaunchDate.ToString();
+            txtProducer.Text = data.Producer;
+            txtCountry.Text = data.Country;
+            txtDirector.Text = data.Director;
+            rtbShortDescription.Text = data.ShortDescription;
+        }
+
+        private void StateChangeHandler()
+        {
+            switch(this.formState)
+            {
+                case State.EDIT:
+                    txtCartoonName.Enabled = true;
+                    txtActors.Enabled = true;
+                    cbCartoonType.Enabled = true;
+                    txtReleaseDate.Enabled = true;
+                    txtProducer.Enabled = true;
+                    txtCountry.Enabled = true;
+                    txtDirector.Enabled = true;
+                    rtbShortDescription.Enabled = true;
+                    btnLuu.Enabled = true;
+                    btnThem.Enabled = false;
+                    txtCartoonCode.Focus();
+                    break;
+
+                case State.NORMAL:
+                    btnThem.Text = "Thêm";
+                    DisableInput();
+                    btnThem.Enabled = true;
+                    btnLuu.Enabled = false;
+                    btnXoa.Enabled = true;
+                    break;
+
+                case State.INSERT:
+                    Reset();
+                    btnThem.Text = "Hủy";
+                    txtCartoonName.Enabled = true;
+                    txtActors.Enabled = true;
+                    cbCartoonType.SelectedIndex = 0;
+                    cbCartoonType.Enabled = true;
+                    txtReleaseDate.Enabled = true;
+                    txtProducer.Enabled = true;
+                    txtCountry.Enabled = true;
+                    txtDirector.Enabled = true;
+                    rtbShortDescription.Enabled = true;
+                    btnLuu.Enabled = true;
+                    txtCartoonCode.Focus();
+                    break;
+            }
+        }
+
+
+        
     }
 }
 

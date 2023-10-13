@@ -29,278 +29,357 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lvData = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.txtMaTruyen = new System.Windows.Forms.TextBox();
-            this.txtTenTruyen = new System.Windows.Forms.TextBox();
-            this.txtTacGia = new System.Windows.Forms.TextBox();
-            this.txtNamXuatBan = new System.Windows.Forms.TextBox();
-            this.txtSoLuong = new System.Windows.Forms.TextBox();
-            this.txtNhaXuatBan = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            lvData = new System.Windows.Forms.ListView();
+            columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            columnHeader8 = new System.Windows.Forms.ColumnHeader();
+            columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            columnHeader9 = new System.Windows.Forms.ColumnHeader();
+            columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            btnThem = new System.Windows.Forms.Button();
+            btnLuu = new System.Windows.Forms.Button();
+            btnXoa = new System.Windows.Forms.Button();
+            btnExit = new System.Windows.Forms.Button();
+            txtCartoonCode = new System.Windows.Forms.TextBox();
+            txtCartoonName = new System.Windows.Forms.TextBox();
+            txtActors = new System.Windows.Forms.TextBox();
+            txtCountry = new System.Windows.Forms.TextBox();
+            txtProducer = new System.Windows.Forms.TextBox();
+            label7 = new System.Windows.Forms.Label();
+            txtReleaseDate = new System.Windows.Forms.DateTimePicker();
+            cbCartoonType = new System.Windows.Forms.ComboBox();
+            label8 = new System.Windows.Forms.Label();
+            txtDirector = new System.Windows.Forms.TextBox();
+            label9 = new System.Windows.Forms.Label();
+            rtbShortDescription = new System.Windows.Forms.RichTextBox();
+            label10 = new System.Windows.Forms.Label();
+            btnLoad = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã truyện";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(8, 80);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(124, 26);
+            label1.TabIndex = 0;
+            label1.Text = "Cartoon Code";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tên truyện tranh";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(8, 131);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(129, 26);
+            label2.TabIndex = 1;
+            label2.Text = "Cartoon Name";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 183);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 26);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Tác giả";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(8, 183);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(62, 26);
+            label3.TabIndex = 1;
+            label3.Text = "Actors";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(410, 83);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 26);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Năm xuất bản";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(410, 83);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(114, 26);
+            label4.TabIndex = 2;
+            label4.Text = "Launch Date";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(410, 128);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 26);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Nhà xuất bản";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(410, 128);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(85, 26);
+            label5.TabIndex = 3;
+            label5.Text = "Producer";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(410, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 26);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Số lượng";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(410, 186);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(75, 26);
+            label6.TabIndex = 4;
+            label6.Text = "Country";
             // 
             // lvData
             // 
-            this.lvData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.lvData.FullRowSelect = true;
-            this.lvData.GridLines = true;
-            this.lvData.HideSelection = false;
-            this.lvData.Location = new System.Drawing.Point(10, 235);
-            this.lvData.Name = "lvData";
-            this.lvData.Size = new System.Drawing.Size(683, 191);
-            this.lvData.TabIndex = 5;
-            this.lvData.UseCompatibleStateImageBehavior = false;
-            this.lvData.View = System.Windows.Forms.View.Details;
+            lvData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { columnHeader1, columnHeader2, columnHeader4, columnHeader7, columnHeader8, columnHeader3, columnHeader9, columnHeader6, columnHeader5 });
+            lvData.FullRowSelect = true;
+            lvData.GridLines = true;
+            lvData.Location = new System.Drawing.Point(8, 565);
+            lvData.Name = "lvData";
+            lvData.Size = new System.Drawing.Size(1371, 400);
+            lvData.TabIndex = 5;
+            lvData.UseCompatibleStateImageBehavior = false;
+            lvData.View = System.Windows.Forms.View.Details;
+            lvData.ItemSelectionChanged += lvData_ItemSelectionChanged;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Mã truyện";
-            this.columnHeader1.Width = 100;
+            columnHeader1.Text = "Cartoon Code";
+            columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Tên truyện";
-            this.columnHeader2.Width = 200;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Nhà xuất bản";
-            this.columnHeader3.Width = 140;
+            columnHeader2.Text = "Cartoon Name";
+            columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            columnHeader2.Width = 200;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Năm xuất bản";
-            this.columnHeader4.Width = 100;
+            columnHeader4.Text = "Launch Date";
+            columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            columnHeader4.Width = 200;
             // 
-            // columnHeader5
+            // columnHeader7
             // 
-            this.columnHeader5.Text = "Tác giả";
+            columnHeader7.Text = "Type";
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Short Description";
+            columnHeader8.Width = 200;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Actors";
+            columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            columnHeader3.Width = 140;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Director";
+            columnHeader9.Width = 100;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Số lượng";
+            columnHeader6.Text = "Country";
+            columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            columnHeader6.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Producer";
+            columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            columnHeader5.Width = 200;
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(710, 235);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(112, 34);
-            this.btnThem.TabIndex = 6;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            btnThem.Location = new System.Drawing.Point(1406, 565);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new System.Drawing.Size(112, 34);
+            btnThem.TabIndex = 6;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // btnLuu
             // 
-            this.btnLuu.Enabled = false;
-            this.btnLuu.Location = new System.Drawing.Point(710, 284);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(112, 34);
-            this.btnLuu.TabIndex = 6;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            btnLuu.Enabled = false;
+            btnLuu.Location = new System.Drawing.Point(1406, 614);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new System.Drawing.Size(112, 34);
+            btnLuu.TabIndex = 6;
+            btnLuu.Text = "Lưu";
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(710, 334);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(112, 34);
-            this.btnXoa.TabIndex = 6;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            btnXoa.Location = new System.Drawing.Point(1406, 664);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new System.Drawing.Size(112, 34);
+            btnXoa.TabIndex = 6;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(710, 392);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(112, 34);
-            this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            btnExit.Location = new System.Drawing.Point(1406, 722);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new System.Drawing.Size(112, 34);
+            btnExit.TabIndex = 6;
+            btnExit.Text = "Thoát";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
-            // txtMaTruyen
+            // txtCartoonCode
             // 
-            this.txtMaTruyen.Enabled = false;
-            this.txtMaTruyen.Location = new System.Drawing.Point(168, 80);
-            this.txtMaTruyen.Name = "txtMaTruyen";
-            this.txtMaTruyen.Size = new System.Drawing.Size(224, 33);
-            this.txtMaTruyen.TabIndex = 1;
+            txtCartoonCode.Enabled = false;
+            txtCartoonCode.Location = new System.Drawing.Point(168, 80);
+            txtCartoonCode.Name = "txtCartoonCode";
+            txtCartoonCode.Size = new System.Drawing.Size(224, 33);
+            txtCartoonCode.TabIndex = 1;
             // 
-            // txtTenTruyen
+            // txtCartoonName
             // 
-            this.txtTenTruyen.Enabled = false;
-            this.txtTenTruyen.Location = new System.Drawing.Point(168, 131);
-            this.txtTenTruyen.Name = "txtTenTruyen";
-            this.txtTenTruyen.Size = new System.Drawing.Size(224, 33);
-            this.txtTenTruyen.TabIndex = 3;
+            txtCartoonName.Enabled = false;
+            txtCartoonName.Location = new System.Drawing.Point(168, 131);
+            txtCartoonName.Name = "txtCartoonName";
+            txtCartoonName.Size = new System.Drawing.Size(224, 33);
+            txtCartoonName.TabIndex = 3;
             // 
-            // txtTacGia
+            // txtActors
             // 
-            this.txtTacGia.Enabled = false;
-            this.txtTacGia.Location = new System.Drawing.Point(168, 183);
-            this.txtTacGia.Name = "txtTacGia";
-            this.txtTacGia.Size = new System.Drawing.Size(224, 33);
-            this.txtTacGia.TabIndex = 5;
+            txtActors.Enabled = false;
+            txtActors.Location = new System.Drawing.Point(168, 183);
+            txtActors.Name = "txtActors";
+            txtActors.Size = new System.Drawing.Size(224, 33);
+            txtActors.TabIndex = 5;
             // 
-            // txtNamXuatBan
+            // txtCountry
             // 
-            this.txtNamXuatBan.Enabled = false;
-            this.txtNamXuatBan.Location = new System.Drawing.Point(544, 80);
-            this.txtNamXuatBan.Name = "txtNamXuatBan";
-            this.txtNamXuatBan.Size = new System.Drawing.Size(112, 33);
-            this.txtNamXuatBan.TabIndex = 2;
+            txtCountry.Enabled = false;
+            txtCountry.Location = new System.Drawing.Point(544, 183);
+            txtCountry.Name = "txtCountry";
+            txtCountry.Size = new System.Drawing.Size(278, 33);
+            txtCountry.TabIndex = 6;
             // 
-            // txtSoLuong
+            // txtProducer
             // 
-            this.txtSoLuong.Enabled = false;
-            this.txtSoLuong.Location = new System.Drawing.Point(544, 183);
-            this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(136, 33);
-            this.txtSoLuong.TabIndex = 6;
-            // 
-            // txtNhaXuatBan
-            // 
-            this.txtNhaXuatBan.Enabled = false;
-            this.txtNhaXuatBan.Location = new System.Drawing.Point(544, 128);
-            this.txtNhaXuatBan.Name = "txtNhaXuatBan";
-            this.txtNhaXuatBan.Size = new System.Drawing.Size(278, 33);
-            this.txtNhaXuatBan.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProjectManagementWinApp_NguyenQuangVinh.Properties.Resources.Comic;
-            this.pictureBox1.Location = new System.Drawing.Point(841, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(315, 410);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            txtProducer.Enabled = false;
+            txtProducer.Location = new System.Drawing.Point(544, 128);
+            txtProducer.Name = "txtProducer";
+            txtProducer.Size = new System.Drawing.Size(278, 33);
+            txtProducer.TabIndex = 4;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label7.Location = new System.Drawing.Point(10, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(752, 57);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "QUẢN LÝ THÔNG TIN TRUYỆN TRANH";
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label7.ForeColor = System.Drawing.SystemColors.Highlight;
+            label7.Location = new System.Drawing.Point(10, 12);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(659, 57);
+            label7.TabIndex = 9;
+            label7.Text = "CARTOON MANAGMENT SYSTEM";
+            // 
+            // txtReleaseDate
+            // 
+            txtReleaseDate.Location = new System.Drawing.Point(544, 78);
+            txtReleaseDate.Name = "txtReleaseDate";
+            txtReleaseDate.Size = new System.Drawing.Size(309, 33);
+            txtReleaseDate.TabIndex = 10;
+            // 
+            // cbCartoonType
+            // 
+            cbCartoonType.FormattingEnabled = true;
+            cbCartoonType.Location = new System.Drawing.Point(168, 231);
+            cbCartoonType.Name = "cbCartoonType";
+            cbCartoonType.Size = new System.Drawing.Size(129, 34);
+            cbCartoonType.TabIndex = 11;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(11, 231);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(52, 26);
+            label8.TabIndex = 12;
+            label8.Text = "Type";
+            // 
+            // txtDirector
+            // 
+            txtDirector.Enabled = false;
+            txtDirector.Location = new System.Drawing.Point(544, 232);
+            txtDirector.Name = "txtDirector";
+            txtDirector.Size = new System.Drawing.Size(278, 33);
+            txtDirector.TabIndex = 14;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(410, 232);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(75, 26);
+            label9.TabIndex = 13;
+            label9.Text = "Director";
+            // 
+            // rtbShortDescription
+            // 
+            rtbShortDescription.Location = new System.Drawing.Point(12, 330);
+            rtbShortDescription.Name = "rtbShortDescription";
+            rtbShortDescription.Size = new System.Drawing.Size(810, 182);
+            rtbShortDescription.TabIndex = 15;
+            rtbShortDescription.Text = "";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(12, 286);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(150, 26);
+            label10.TabIndex = 16;
+            label10.Text = "Short Description";
+            // 
+            // btnLoad
+            // 
+            btnLoad.Location = new System.Drawing.Point(1406, 779);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new System.Drawing.Size(112, 34);
+            btnLoad.TabIndex = 17;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
             // 
             // frmTT
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 439);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtSoLuong);
-            this.Controls.Add(this.txtTacGia);
-            this.Controls.Add(this.txtNhaXuatBan);
-            this.Controls.Add(this.txtTenTruyen);
-            this.Controls.Add(this.txtNamXuatBan);
-            this.Controls.Add(this.txtMaTruyen);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.lvData);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Arial Narrow", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmTT";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTT";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTT_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1576, 1012);
+            Controls.Add(btnLoad);
+            Controls.Add(label10);
+            Controls.Add(rtbShortDescription);
+            Controls.Add(txtDirector);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(cbCartoonType);
+            Controls.Add(txtReleaseDate);
+            Controls.Add(label7);
+            Controls.Add(txtCountry);
+            Controls.Add(txtActors);
+            Controls.Add(txtProducer);
+            Controls.Add(txtCartoonName);
+            Controls.Add(txtCartoonCode);
+            Controls.Add(btnExit);
+            Controls.Add(btnXoa);
+            Controls.Add(btnLuu);
+            Controls.Add(btnThem);
+            Controls.Add(lvData);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Font = new System.Drawing.Font("Arial Narrow", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Name = "frmTT";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "frmTT";
+            FormClosing += frmTT_FormClosing;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -316,19 +395,28 @@ namespace ProjectManagementWinApp_NguyenQuangVinh
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.TextBox txtMaTruyen;
-        private System.Windows.Forms.TextBox txtTenTruyen;
-        private System.Windows.Forms.TextBox txtTacGia;
-        private System.Windows.Forms.TextBox txtNamXuatBan;
-        private System.Windows.Forms.TextBox txtSoLuong;
-        private System.Windows.Forms.TextBox txtNhaXuatBan;
+        private System.Windows.Forms.TextBox txtCartoonCode;
+        private System.Windows.Forms.TextBox txtCartoonName;
+        private System.Windows.Forms.TextBox txtActors;
+        private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.TextBox txtProducer;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker txtReleaseDate;
+        private System.Windows.Forms.ComboBox cbCartoonType;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtDirector;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RichTextBox rtbShortDescription;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

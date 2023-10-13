@@ -14,10 +14,14 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="17.7.37355" />
   </ItemGroup>
+	<ItemGroup>
+		<None Update="appsetting.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
-    <ProjectReference Include="..\Repositories\Repositories.csproj" />
   </ItemGroup>
 
 </Project>

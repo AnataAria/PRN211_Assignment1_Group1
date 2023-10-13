@@ -16,7 +16,7 @@
 
 - Default username is: admin@FUCartoonManagement.com
 - Default password is: @@admin@@
-- You can change this default on file appsetings.json on folder ./WindowsFormsDemo/appsettings.json
+- You can change this default on file appsetings.json is here: https://github.com/AnataAria/PRN211_Assignment1_Group1/blob/main/document/Assignment_01_CartoonManagement_V5.docx
 
 ### DOCUMENT
 - The document about this assignment is in folder ./document/Assignment_01_CartoonManagement_V5.docx

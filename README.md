@@ -7,7 +7,7 @@
 
 ### TECH IN USE
 
-- C#
+- C# (.NET 6)
 - Entity Framework Core
 - Windows Form
 - SQL Server
